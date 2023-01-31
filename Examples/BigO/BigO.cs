@@ -4,6 +4,7 @@ namespace Examples.BigO
 {
     public static class BigO
     {
+        // O(N)
         public static void Foo(int[] array)
         {
             int sum = 0;
@@ -30,11 +31,35 @@ namespace Examples.BigO
             TimeSpan productTimeSpan = productStopWatch.Elapsed;
 
 
-            string sumForElapsedTime = $"{sumTimeSpan.Seconds / 10:00}:{sumTimeSpan.Milliseconds / 10:00}:{sumTimeSpan.Microseconds / 10:00}:{sumTimeSpan.Nanoseconds / 10:00}";
-            string productForElapsedTime = $"{productTimeSpan.Seconds / 10:00}:{productTimeSpan.Milliseconds / 10:00}:{productTimeSpan.Microseconds / 10:00}:{productTimeSpan.Nanoseconds / 10:00}";
+            string sumForElapsedTime = $"{sumTimeSpan.Seconds:D}:{sumTimeSpan.Milliseconds:D}:{sumTimeSpan.Microseconds:D}:{sumTimeSpan.Nanoseconds:D}";
+            string productForElapsedTime = $"{productTimeSpan.Seconds:D}:{productTimeSpan.Milliseconds:D}:{productTimeSpan.Microseconds:D}:{productTimeSpan.Nanoseconds:D}";
 
             Console.WriteLine($"Sum:{sum}-Elapsed time:{sumForElapsedTime}-Elapsed ticks:{sumStopWatch.ElapsedTicks}," +
-                              $"Product:{product}-Elapsed time:{productForElapsedTime}-Elapsed ticks:{productStopWatch.ElapsedTicks}");
+                              $"Product:{product}-Elapsed time:{productForElapsedTime}-Elapsed ticks:{productStopWatch.ElapsedTicks}\n");
+
+
         }
+
+        // O(N²)
+        public static void PrintPairs(int[] array)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array.Length; j++)
+                {
+                    Console.WriteLine("i:" + array[i] + "," + "j" + array[j]);
+                }
+            }
+
+            stopWatch.Stop();
+            TimeSpan timeSpan = stopWatch.Elapsed;
+            string elapsedTime = $"{timeSpan.Seconds:D}:{timeSpan.Milliseconds:D}:{timeSpan.Microseconds:D}:{timeSpan.Nanoseconds:D}";
+
+            Console.WriteLine($"Elapsed time:{elapsedTime}-Elapsed ticks:{stopWatch.ElapsedTicks}\n");
+        }
+
     }
 }

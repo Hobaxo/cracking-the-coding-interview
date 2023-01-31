@@ -10,6 +10,9 @@
             int number = 1;
             int[] array = Enumerable.Repeat(0, 25).Select(value => number++).ToArray();
             BigO.BigO.Foo(array);
+
+            Console.WriteLine("Example 2: O(N²)");
+            BigO.BigO.PrintPairs(array);
         }
     }
 }
