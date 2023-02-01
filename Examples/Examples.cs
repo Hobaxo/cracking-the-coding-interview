@@ -1,11 +1,12 @@
-﻿namespace Examples
+﻿using System.Text;
+
+namespace Examples
 {
     internal class Examples
     {
         private static void Main()
         {
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
-
+            Console.OutputEncoding = Encoding.Unicode;
             Console.WriteLine("Example 1: O(N)");
             int number = 1;
             int[] array = Enumerable.Repeat(0, 25).Select(value => number++).ToArray();
