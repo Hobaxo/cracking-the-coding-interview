@@ -13,7 +13,6 @@ namespace Examples.BigO
             Stopwatch firstForStopWatch = new Stopwatch();
             Stopwatch secondForStopWatch = new Stopwatch();
 
-
             firstForStopWatch.Start();
             for (int i = 0; i < array.Length; i++)
             {
@@ -36,8 +35,8 @@ namespace Examples.BigO
         public static void PrintPairs(int[] array)
         {
             Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
 
+            stopWatch.Start();
             for (int i = 0; i < array.Length; i++)
             {
                 for (int j = 0; j < array.Length; j++)
@@ -57,8 +56,8 @@ namespace Examples.BigO
         public static void PrintUnorderedPairs(int[] array)
         {
             Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
 
+            stopWatch.Start();
             for (int i = 0; i < array.Length; i++)
             {
                 for (int j = i + 1; j < array.Length; j++)
@@ -73,7 +72,7 @@ namespace Examples.BigO
             ElapsedTime.PrintElapsedTime(stopWatch);
         }
 
-        // O(ab) - two different inputs (arrays)
+        // O(AB) - two different inputs (arrays)
         public static void PrintUnorderedPairs(int[] arrayA, int[] arrayB)
         {
             Stopwatch firstForStopWatch = new Stopwatch();
@@ -99,7 +98,7 @@ namespace Examples.BigO
             ElapsedTime.PrintElapsedTime(firstForStopWatch, secondForStopWatch);
         }
 
-        // O(ab) - third for is a constant
+        // O(AB ) - third for is a constant
         public static void PrintUnorderedPairsWithExtraFor(int[] arrayA, int[] arrayB)
         {
             Stopwatch firstForStopWatch = new Stopwatch();
@@ -123,6 +122,24 @@ namespace Examples.BigO
             firstForStopWatch.Stop();
 
             ElapsedTime.PrintElapsedTime(firstForStopWatch, secondForStopWatch);
+        }
+
+        // O(N/2)= O(N)
+        public static void ArrayReversal(int[] array)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+
+            stopWatch.Start();
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                int reversalIndex = array.Length - i - 1;
+                int value = array[reversalIndex];
+                array[reversalIndex] = array[i];
+                array[i] = value;
+            }
+            stopWatch.Stop();
+
+            ElapsedTime.PrintElapsedTime(stopWatch);
         }
     }
 }
