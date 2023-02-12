@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Utilities;
 
 namespace Examples.BigO
 {
@@ -9,34 +10,26 @@ namespace Examples.BigO
         {
             int sum = 0;
             int product = 1;
-            Stopwatch sumStopWatch = new Stopwatch();
-            Stopwatch productStopWatch = new Stopwatch();
+            Stopwatch firstForStopWatch = new Stopwatch();
+            Stopwatch secondForStopWatch = new Stopwatch();
 
 
-            sumStopWatch.Start();
+            firstForStopWatch.Start();
             for (int i = 0; i < array.Length; i++)
             {
                 sum += i;
             }
-            sumStopWatch.Stop();
-            TimeSpan sumTimeSpan = sumStopWatch.Elapsed;
+            firstForStopWatch.Stop();
 
-            productStopWatch.Start();
+            secondForStopWatch.Start();
             for (int i = 0; i < array.Length; i++)
             {
                 product *= array[i];
 
             }
-            productStopWatch.Stop();
-            TimeSpan productTimeSpan = productStopWatch.Elapsed;
+            secondForStopWatch.Stop();
 
-
-            string sumForElapsedTime = $"{sumTimeSpan.Seconds:D}:{sumTimeSpan.Milliseconds:D}:{sumTimeSpan.Microseconds:D}:{sumTimeSpan.Nanoseconds:D}";
-            string productForElapsedTime = $"{productTimeSpan.Seconds:D}:{productTimeSpan.Milliseconds:D}:{productTimeSpan.Microseconds:D}:{productTimeSpan.Nanoseconds:D}";
-
-            Console.WriteLine($"Sum:{sum}-Elapsed time:{sumForElapsedTime}-Elapsed ticks:{sumStopWatch.ElapsedTicks}, Product:{product}-Elapsed time:{productForElapsedTime}-Elapsed ticks:{productStopWatch.ElapsedTicks}\n");
-
-
+            ElapsedTime.PrintElapsedTime(firstForStopWatch, secondForStopWatch);
         }
 
         // O(N²)
@@ -54,12 +47,9 @@ namespace Examples.BigO
 
                 Console.Write('\n');
             }
-
             stopWatch.Stop();
-            TimeSpan timeSpan = stopWatch.Elapsed;
-            string elapsedTime = $"{timeSpan.Seconds:D}:{timeSpan.Milliseconds:D}:{timeSpan.Microseconds:D}:{timeSpan.Nanoseconds:D}";
 
-            Console.WriteLine($"Elapsed time:{elapsedTime}-Elapsed ticks:{stopWatch.ElapsedTicks}\n");
+            ElapsedTime.PrintElapsedTime(stopWatch);
         }
 
 
@@ -78,12 +68,9 @@ namespace Examples.BigO
 
                 Console.Write('\n');
             }
-
             stopWatch.Stop();
-            TimeSpan timeSpan = stopWatch.Elapsed;
-            string elapsedTime = $"{timeSpan.Seconds:D}:{timeSpan.Milliseconds:D}:{timeSpan.Microseconds:D}:{timeSpan.Nanoseconds:D}";
 
-            Console.WriteLine($"Elapsed time:{elapsedTime}-Elapsed Ticks:{stopWatch.ElapsedTicks}\n");
+            ElapsedTime.PrintElapsedTime(stopWatch);
         }
 
         // O(ab) - two different inputs (arrays)
@@ -107,16 +94,9 @@ namespace Examples.BigO
                 secondForStopWatch.Stop();
                 Console.Write('\n');
             }
-
             firstForStopWatch.Stop();
-            TimeSpan firstForTimeSpan = firstForStopWatch.Elapsed;
-            TimeSpan secondForTimeSpan = secondForStopWatch.Elapsed;
 
-
-            string firstForElapsedTime = $"{firstForTimeSpan.Seconds:D}:{firstForTimeSpan.Milliseconds:D}:{firstForTimeSpan.Microseconds:D}:{firstForTimeSpan.Nanoseconds:D}";
-            string secondForElapsedTime = $"{secondForTimeSpan.Seconds:D}:{secondForTimeSpan.Milliseconds:D}:{secondForTimeSpan.Microseconds:D}:{secondForTimeSpan.Nanoseconds:D}";
-
-            Console.WriteLine($"First For elapsed time:{firstForElapsedTime}-Elapsed ticks:{firstForStopWatch.ElapsedTicks}-Second For elapsed time:{secondForElapsedTime}-Elapsed ticks:{secondForStopWatch.ElapsedTicks}\n");
+            ElapsedTime.PrintElapsedTime(firstForStopWatch, secondForStopWatch);
         }
 
         // O(ab) - third for is a constant
@@ -140,16 +120,9 @@ namespace Examples.BigO
                     Console.Write('\n');
                 }
             }
-
             firstForStopWatch.Stop();
-            TimeSpan firstForTimeSpan = firstForStopWatch.Elapsed;
-            TimeSpan secondForTimeSpan = secondForStopWatch.Elapsed;
 
-
-            string firstForElapsedTime = $"{firstForTimeSpan.Seconds:D}:{firstForTimeSpan.Milliseconds:D}:{firstForTimeSpan.Microseconds:D}:{firstForTimeSpan.Nanoseconds:D}";
-            string secondForElapsedTime = $"{secondForTimeSpan.Seconds:D}:{secondForTimeSpan.Milliseconds:D}:{secondForTimeSpan.Microseconds:D}:{secondForTimeSpan.Nanoseconds:D}";
-
-            Console.WriteLine($"First For elapsed time:{firstForElapsedTime}-Elapsed ticks:{firstForStopWatch.ElapsedTicks}-Second For elapsed time:{secondForElapsedTime}-Elapsed ticks:{secondForStopWatch.ElapsedTicks}\n");
+            ElapsedTime.PrintElapsedTime(firstForStopWatch, secondForStopWatch);
         }
     }
 }

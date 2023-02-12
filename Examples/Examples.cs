@@ -11,6 +11,7 @@ namespace Examples
             int number = 1;
             int[] array = Enumerable.Repeat(0, 25).Select(value => number++).ToArray();
 
+
             Console.WriteLine("Example 1: O(N)");
             BigO.BigO.Foo(array);
 
@@ -24,6 +25,12 @@ namespace Examples
             Console.WriteLine("Example 4: O(ab)");
             int[] arrayB = Enumerable.Repeat(0, 25).Select(value => number++).ToArray();
             BigO.BigO.PrintUnorderedPairs(array, arrayB);
+
+            Thread.Sleep(5000);
+
+            Console.WriteLine("Example 5: O(ab)");
+            BigO.BigO.PrintUnorderedPairsWithExtraFor(array, arrayB);
+
         }
     }
 }
